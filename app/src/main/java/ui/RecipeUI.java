@@ -110,17 +110,16 @@ public class RecipeUI {
      */
     private void addNewRecipe() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String input;
         String recipeName;
         String ingredients;
+        //入力
         System.out.print("Enter recipe name: ");
-        input = reader.readLine();
+        recipeName = reader.readLine();
         System.out.print("Enter main ingredients (comma separated): ");
-        
-        
-
-        
-
+        ingredients = reader.readLine();
+        //インスタンス生成
+        RecipeFileHandler fileHandler = new RecipeFileHandler();
+        fileHandler.addRecipe(recipeName,ingredients);
     }
 
     /**

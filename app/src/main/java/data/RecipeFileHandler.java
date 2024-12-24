@@ -53,7 +53,7 @@ public class RecipeFileHandler {
     public void addRecipe(String recipeName, String ingredients) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath,true))) {
-            System.out.println(recipeName + "," + ingredients);
+            writer.write(recipeName + "," + ingredients);
             writer.newLine();
             System.out.println("Recipe added successfully.");
 
