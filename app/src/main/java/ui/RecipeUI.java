@@ -37,9 +37,11 @@ public class RecipeUI {
                 switch (choice) {
                     case "1":
                         // 設問1: 一覧表示機能
+                        displayRecipes();
                         break;
                     case "2":
                         // 設問2: 新規登録機能
+                        addNewRecipe();
                         break;
                     case "3":
                         // 設問3: 検索機能
@@ -63,6 +65,41 @@ public class RecipeUI {
      */
     private void displayRecipes() {
 
+        ArrayList<String> recipes = fileHandler.readRecipes();
+
+        //レシピが空かの確認
+        if (recipes.isEmpty()) {
+            System.out.println("No recipes available.");
+            return;
+        
+        } else {
+            System.out.println("Recipes:");
+            System.out.println("-----------------------------------");
+        }
+
+        //出力
+        for(String recipe : recipes) {
+            //配列txtにrecipesを分解して格納
+            String[] txt = recipe.split(",");
+            //一つ目の配列が料理名
+            System.out.println("Recipe Name: " + txt[0]) ;
+            System.out.print("Main Ingredients: ");
+
+            //for文で材料をループさせる
+            for(int i = 1; i <= txt.length - 1; i++) {
+                System.out.print(txt[i]);
+                //不要なカンマを出さないためにif文で個別に記載
+                if (i < txt.length -1) {
+                    System.out.print(",");
+                }
+            }
+
+            
+            //改行
+            System.out.println();
+            System.out.println("-----------------------------------");
+        }
+
     }
 
     /**
@@ -72,6 +109,17 @@ public class RecipeUI {
      * @throws java.io.IOException 入出力が受け付けられない
      */
     private void addNewRecipe() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String input;
+        String recipeName;
+        String ingredients;
+        System.out.print("Enter recipe name: ");
+        input = reader.readLine();
+        System.out.print("Enter main ingredients (comma separated): ");
+        
+        
+
+        
 
     }
 
